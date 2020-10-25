@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listweather.R
@@ -44,9 +45,14 @@ class ListFragment : Fragment() {
 
         addButton.setOnClickListener {
             val title = inputTask.text.toString()
-            val todo = ToDo(title)
-            todoList.add(todo)
-            adapter.notifyItemInserted(todoList.size-1)
+            if (title.isNotEmpty()){
+                val todo = ToDo(title)
+                todoList.add(todo)
+                adapter.notifyItemInserted(todoList.size - 1)
+            }
+            else{
+                Toast.makeText(activity,"Please Enter Something",Toast.LENGTH_SHORT).show()
+            }
         }
 
         return x
