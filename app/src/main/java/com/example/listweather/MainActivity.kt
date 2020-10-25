@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         val listfragment = ListFragment()
         val weatherFragment = WeatherFragment()
-        val infofragment = InfoFragment()
+//        val infofragment = InfoFragment()
 
         makeCurrentFragment(listfragment)
 
