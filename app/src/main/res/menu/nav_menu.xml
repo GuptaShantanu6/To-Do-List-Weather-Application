@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/listid"
+        android:title="@string/to_do_list"
+        android:icon="@drawable/ic_baseline_check_24"/>
+
+    <item
+        android:id="@+id/weatherid"
+        android:title="@string/weather"
+        android:icon="@drawable/ic_baseline_wb_sunny_24"/>
+
+<!--    <item-->
+<!--        android:id="@+id/infoid"-->
+<!--        android:title="@string/info"-->
+<!--        android:icon="@drawable/ic_baseline_info_24"/>-->
+</menu>
