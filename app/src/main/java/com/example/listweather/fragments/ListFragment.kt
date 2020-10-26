@@ -49,6 +49,7 @@ class ListFragment : Fragment() {
                 val todo = ToDo(title)
                 todoList.add(todo)
                 adapter.notifyItemInserted(todoList.size - 1)
+                Toast.makeText(activity,"Task Successfully Added",Toast.LENGTH_LONG).show()
             }
             else{
                 Toast.makeText(activity,"Please Enter Something",Toast.LENGTH_SHORT).show()
