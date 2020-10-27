@@ -41,4 +41,7 @@ dependencies {
     //recycler view dependency
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
+    //recycler view animation
+    implementation 'jp.wasabeef:recyclerview-animators:4.0.0'
+
 }

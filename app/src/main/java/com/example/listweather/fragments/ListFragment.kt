@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.OvershootInterpolator
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.Toast
@@ -15,6 +16,10 @@ import androidx.core.content.getSystemService
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listweather.R
+import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
+import jp.wasabeef.recyclerview.animators.FlipInLeftYAnimator
+import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListFragment : Fragment() {
@@ -41,6 +46,7 @@ class ListFragment : Fragment() {
         )
 
         val recycleViewId = x.findViewById<View>(R.id.recycleViewId) as RecyclerView
+        recycleViewId.itemAnimator = SlideInLeftAnimator()
 
         val adapter = ToDoAdapter(todoList)
         recycleViewId.adapter = adapter
@@ -50,10 +56,11 @@ class ListFragment : Fragment() {
 
         addButton.setOnClickListener {
             val title = inputTask.text.toString()
+
             if (title.isNotEmpty()){
                 val todo = ToDo(title)
-                todoList.add(todo)
-                adapter.notifyItemInserted(todoList.size - 1)
+                todoList.add(1,todo)
+                adapter.notifyItemInserted(1)
                 Toast.makeText(activity,"Task Successfully Added",Toast.LENGTH_LONG).show()
                 hideKeyboard()
                 inputTask.text.clear()
