@@ -1,12 +1,17 @@
 package com.example.listweather.fragments
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.getSystemService
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listweather.R
@@ -50,6 +55,9 @@ class ListFragment : Fragment() {
                 todoList.add(todo)
                 adapter.notifyItemInserted(todoList.size - 1)
                 Toast.makeText(activity,"Task Successfully Added",Toast.LENGTH_LONG).show()
+                hideKeyboard()
+
+
             }
             else{
                 Toast.makeText(activity,"Please Enter Something",Toast.LENGTH_SHORT).show()
@@ -57,6 +65,19 @@ class ListFragment : Fragment() {
         }
 
         return x
+    }
+
+    fun Fragment.hideKeyboard() {
+        view?.let { activity?.hideKeyboard(it) }
+    }
+
+    fun Activity.hideKeyboard() {
+        hideKeyboard(currentFocus ?: View(this))
+    }
+
+    fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
 }
