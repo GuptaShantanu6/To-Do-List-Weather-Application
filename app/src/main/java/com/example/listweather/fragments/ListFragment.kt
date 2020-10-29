@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.getSystemService
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listweather.R
@@ -58,9 +59,14 @@ class ListFragment : Fragment() {
             val title = inputTask.text.toString()
 
             if (title.isNotEmpty()){
+                var xy : Int = if (adapter.itemCount==0){
+                    0
+                } else {
+                    1
+                }
                 val todo = ToDo(title)
-                todoList.add(1,todo)
-                adapter.notifyItemInserted(1)
+                todoList.add(xy,todo)
+                adapter.notifyItemInserted(xy)
                 Toast.makeText(activity,"Task Successfully Added",Toast.LENGTH_LONG).show()
                 hideKeyboard()
                 inputTask.text.clear()
@@ -70,6 +76,10 @@ class ListFragment : Fragment() {
                 Toast.makeText(activity,"Please Enter Something",Toast.LENGTH_SHORT).show()
             }
         }
+
+        var itemTouchHelper = ItemTouchHelper(SwipeToDelete(adapter))
+        itemTouchHelper.attachToRecyclerView(recycleViewId)
+
 
         return x
     }

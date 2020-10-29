@@ -8,7 +8,7 @@ import com.example.listweather.R
 import kotlinx.android.synthetic.main.item_todo.view.*
 
 class ToDoAdapter(
-    var todos : List<ToDo>
+    var todos : MutableList<ToDo>
 ) : RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder>() {
 
     inner class ToDoViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
@@ -22,6 +22,11 @@ class ToDoAdapter(
         holder.itemView.apply {
             tvTitle.text = todos[position].title
         }
+    }
+
+    fun deleteItem(pos:Int){
+        todos.removeAt(pos)
+        notifyItemRemoved(pos)
     }
 
     override fun getItemCount(): Int {
