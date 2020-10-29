@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listweather.R
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.item_todo.view.*
 
 class ToDoAdapter(

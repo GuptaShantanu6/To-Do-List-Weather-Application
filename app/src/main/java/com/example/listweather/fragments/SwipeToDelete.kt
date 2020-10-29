@@ -2,6 +2,7 @@ package com.example.listweather.fragments
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 
 class SwipeToDelete(var adapter : ToDoAdapter) : ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
     override fun onMove(
@@ -15,5 +16,6 @@ class SwipeToDelete(var adapter : ToDoAdapter) : ItemTouchHelper.SimpleCallback(
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         var pos : Int = viewHolder.adapterPosition
         adapter.deleteItem(pos)
+
     }
 }

@@ -11,6 +11,7 @@ import android.view.animation.OvershootInterpolator
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.getSystemService
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -80,6 +81,7 @@ class ListFragment : Fragment() {
         var itemTouchHelper = ItemTouchHelper(SwipeToDelete(adapter))
         itemTouchHelper.attachToRecyclerView(recycleViewId)
 
+        (activity as AppCompatActivity).supportActionBar?.title = "To-Do List"
 
         return x
     }
