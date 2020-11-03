@@ -18,7 +18,7 @@ class WeatherFragment : Fragment() {
 
         val wView : View = inflater.inflate(R.layout.fragment_weather,container,false)
 
-        (activity as AppCompatActivity).supportActionBar?.title = "Weather"
+        (activity as AppCompatActivity).supportActionBar?.title = "                               Weather            "
 
         return wView
     }

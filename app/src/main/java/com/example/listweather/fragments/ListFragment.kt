@@ -2,6 +2,7 @@ package com.example.listweather.fragments
 
 import android.app.Activity
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -81,7 +82,7 @@ class ListFragment : Fragment() {
         var itemTouchHelper = ItemTouchHelper(SwipeToDelete(adapter))
         itemTouchHelper.attachToRecyclerView(recycleViewId)
 
-        (activity as AppCompatActivity).supportActionBar?.title = "To-Do List"
+        (activity as AppCompatActivity).supportActionBar?.title = "                             To-Do List            "
 
         return x
     }
