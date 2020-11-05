@@ -1,20 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     tools:context=".fragments.WeatherFragment">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/inputCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:hint="Enter the City Name"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39"
+        />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/weather_fragment"
-            android:layout_centerInParent="true"/>
+    <Button
+        android:id="@+id/enterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        android:fontFamily="cursive"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:padding="15sp"
+        android:text="@string/search"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputCity"
+        app:layout_constraintVertical_bias="0.2" />
 
-    </RelativeLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="484dp" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/sun_rise"
+        android:layout_width="82dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_sunrise"
+        app:layout_constraintBottom_toTopOf="@id/guideline3"
+        app:layout_constraintEnd_toStartOf="@id/sun_set"
+        app:layout_constraintHorizontal_bias="0.658"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline2"
+        app:layout_constraintVertical_bias="0.434" />
+
+    <ImageView
+        android:id="@+id/sun_set"
+        android:layout_width="82dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_sunset"
+        app:layout_constraintBottom_toTopOf="@id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline2"
+        app:layout_constraintVertical_bias="0.434" />
+
+    <ImageView
+        android:id="@+id/wi_nd"
+        android:layout_width="82dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_wind"
+        app:layout_constraintBottom_toTopOf="@id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.851"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline2"
+        app:layout_constraintVertical_bias="0.434" />
+
+    <ImageView
+        android:id="@+id/humidi_ty"
+        android:layout_width="82dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_humidity"
+        app:layout_constraintBottom_toTopOf="@id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline2"
+        app:layout_constraintVertical_bias="0.822" />
+
+    <TextView
+        android:id="@+id/sunrise_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:text="-:-- Am"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline2"
+        app:layout_constraintVertical_bias="0.61" />
+
+    <TextView
+        android:id="@+id/sunset_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-:--Pm"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline2"
+        app:layout_constraintVertical_bias="0.61"
+        android:fontFamily="cursive"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/wind_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-.-- Km/h"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.853"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline2"
+        app:layout_constraintVertical_bias="0.61"
+        android:fontFamily="cursive"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/humidity_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-.--g/m3"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline2"
+        app:layout_constraintVertical_bias="0.96"
+        android:fontFamily="cursive"
+        android:textStyle="bold"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="550dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
