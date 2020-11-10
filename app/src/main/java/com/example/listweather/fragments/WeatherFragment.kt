@@ -93,7 +93,11 @@ class WeatherFragment : Fragment() {
                                 myData.sys.sunrise.toLong()
                             ))
                             srise = srise.toString()
-                            srise=srise.substring(11,16) + " Am"
+                            srise=srise.substring(11,16)
+                            if (srise.substring(0,2)>="12"){
+                                srise+=" Pm"
+                            }
+                            else srise+=" Am"
                             sunrise_text.text = srise
                             var sset = java.time.format.DateTimeFormatter.ISO_INSTANT.format(java.time.Instant.ofEpochSecond(
                                 myData.sys.sunset.toLong()
