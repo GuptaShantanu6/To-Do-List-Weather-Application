@@ -20,6 +20,7 @@ import androidx.loader.content.AsyncTaskLoader
 import com.beust.klaxon.Klaxon
 import com.example.listweather.R
 import com.example.listweather.fragments.api.WeatherJson
+import jp.wasabeef.blurry.Blurry
 import kotlinx.android.synthetic.main.fragment_weather.*
 import okhttp3.*
 import java.io.IOException
@@ -48,6 +49,7 @@ class WeatherFragment : Fragment() {
 //            inputCity.setText("")
             hideKeyboard()
             progress_bar.visibility = View.VISIBLE
+            Blurry.with(context).radius(25).sampling(2).onto(wView as ViewGroup?)
             city = inputCity.text.toString()
             var URL : String = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$API"
             val client = OkHttpClient()
@@ -82,6 +84,7 @@ class WeatherFragment : Fragment() {
                         h+=" %"
                         activity?.runOnUiThread(Runnable {
                             progress_bar.visibility = View.GONE
+                            Blurry.delete(wView)
                             temp_text.text = temp2
                             humidity_text.text = h
 //                            sunrise_text.text = myData.sys.sunrise.toString()
@@ -134,6 +137,8 @@ class WeatherFragment : Fragment() {
         val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
+
+    
 
 }
 
