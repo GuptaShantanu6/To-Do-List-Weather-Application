@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class ToDoViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val readallToDo : LiveData<MutableList<ToDo>>
+    val readallToDo : LiveData<List<ToDo>>
     private val repository : ToDoRepository
 
     init {
@@ -21,6 +21,12 @@ class ToDoViewModel(application: Application) : AndroidViewModel(application) {
     fun addToDo(toDo: ToDo){
         viewModelScope.launch(Dispatchers.IO){
             repository.addToDo(toDo)
+        }
+    }
+
+    fun deleteToDo(toDo: ToDo){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteToDo(toDo)
         }
     }
 }

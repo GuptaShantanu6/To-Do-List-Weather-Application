@@ -1,10 +1,7 @@
 package com.example.listweather.fragments
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface ToDoDao {
@@ -13,5 +10,8 @@ interface ToDoDao {
     suspend fun addToDo(todo: ToDo)
 
     @Query("SELECT * FROM todo_table")
-    fun readallToDo() : LiveData<MutableList<ToDo>>
+    fun readallToDo() : LiveData<List<ToDo>>
+
+    @Delete
+    suspend fun deleteToDo(todo: ToDo)
 }
