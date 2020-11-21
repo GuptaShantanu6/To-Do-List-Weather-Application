@@ -50,6 +50,7 @@ class WeatherFragment : Fragment() {
             hideKeyboard()
             progress_bar.visibility = View.VISIBLE
             Blurry.with(context).radius(25).sampling(2).onto(wView as ViewGroup?)
+            enterButton.isEnabled = false
             city = inputCity.text.toString()
             var URL : String = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$API"
             val client = OkHttpClient()
@@ -84,6 +85,7 @@ class WeatherFragment : Fragment() {
                         h+=" %"
                         activity?.runOnUiThread(Runnable {
                             progress_bar.visibility = View.GONE
+                            enterButton.isEnabled = true
                             Blurry.delete(wView)
                             temp_text.text = temp2
                             humidity_text.text = h

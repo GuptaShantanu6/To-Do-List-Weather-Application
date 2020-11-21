@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listweather.R
+import es.dmoral.toasty.Toasty
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import kotlinx.android.synthetic.main.fragment_list.*
 
@@ -124,17 +125,21 @@ class ListFragment : Fragment(), IToDoRoomAdapter {
             mToDoViewModel.addToDo(user)
             hideKeyboard()
             inputTask.text.clear()
-            Toast.makeText(activity,"Task has been added",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(activity,"Task has been added",Toast.LENGTH_SHORT).show()
+            activity?.let { Toasty.success(it,"Task Added",Toast.LENGTH_SHORT).show() }
         }
         else{
-            Toast.makeText(activity,"Please Enter Something and Try Again",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(activity,"Please Enter Something and Try Again",Toast.LENGTH_SHORT).show()
+            activity?.let { Toasty.error(it,"Please Enter Something and try again",Toast.LENGTH_SHORT).show() }
         }
 
     }
 
     override fun onItemClicked(todo: ToDo) {
         mToDoViewModel.deleteToDo(todo)
-        Toast.makeText(activity,"${todo.title} is Deleted",Toast.LENGTH_SHORT).show()
+//        Toast.makeText(activity,"${todo.title} is Deleted",Toast.LENGTH_SHORT).show()
+        activity?.let { Toasty.success(it,"${todo.title} Deleted",Toast.LENGTH_SHORT).show() }
     }
+
 
 }
