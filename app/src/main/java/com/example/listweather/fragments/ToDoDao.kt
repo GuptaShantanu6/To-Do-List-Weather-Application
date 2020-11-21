@@ -13,5 +13,5 @@ interface ToDoDao {
     fun readallToDo() : LiveData<List<ToDo>>
 
     @Delete
-    suspend fun deleteToDo(todo: ToDo)
+    suspend fun deleteToDo(todo : ToDo)
 }

@@ -36,7 +36,7 @@ class WeatherFragment : Fragment() {
 
         val wView : View = inflater.inflate(R.layout.fragment_weather,container,false)
 
-        (activity as AppCompatActivity).supportActionBar?.title = "                           Quick Weather            "
+        (activity as AppCompatActivity).supportActionBar?.title = "                       Quick Weather            "
 
         val enterButton : Button = wView.findViewById<Button>(R.id.enterButton)
         var city : String = "Chicago"

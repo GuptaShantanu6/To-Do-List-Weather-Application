@@ -22,7 +22,7 @@ import com.example.listweather.R
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import kotlinx.android.synthetic.main.fragment_list.*
 
-class ListFragment : Fragment() {
+class ListFragment : Fragment(), IToDoRoomAdapter {
 
     private lateinit var mToDoViewModel: ToDoViewModel
     private lateinit var mToDoViewModel_adapter : ToDoViewModel
@@ -52,17 +52,16 @@ class ListFragment : Fragment() {
 
         val recycleViewId = x.findViewById<View>(R.id.recycleViewId) as RecyclerView
         recycleViewId.itemAnimator = SlideInLeftAnimator()
-        val adapter = ToDoRoomAdapter()
+        val adapter = ToDoRoomAdapter(this)
         recycleViewId.adapter = adapter
         recycleViewId.layoutManager = LinearLayoutManager(this.context)
 //        val adapter = ToDoAdapter(todoList)
 //        recycleViewId.adapter = adapter
 //        recycleViewId.layoutManager = LinearLayoutManager(this.context)
 
-        mToDoViewModel_adapter = ViewModelProvider(this).get(ToDoViewModel::class.java)
-        mToDoViewModel_adapter.readallToDo.observe(viewLifecycleOwner, Observer {todo ->
+//        mToDoViewModel = ViewModelProvider(this).get(ToDoViewModel::class.java)
+        mToDoViewModel.readallToDo.observe(viewLifecycleOwner, Observer {todo ->
             adapter.setData(todo)
-
         })
 
         val addButton : Button = x.findViewById<Button>(R.id.addButton)
@@ -97,7 +96,7 @@ class ListFragment : Fragment() {
 
 
 
-        (activity as AppCompatActivity).supportActionBar?.title = "                             To-Do List            "
+        (activity as AppCompatActivity).supportActionBar?.title = "                         To-Do List            "
 
         return x
     }
@@ -131,6 +130,11 @@ class ListFragment : Fragment() {
             Toast.makeText(activity,"Please Enter Something and Try Again",Toast.LENGTH_SHORT).show()
         }
 
+    }
+
+    override fun onItemClicked(todo: ToDo) {
+        mToDoViewModel.deleteToDo(todo)
+        Toast.makeText(activity,"${todo.title} is Deleted",Toast.LENGTH_SHORT).show()
     }
 
 }

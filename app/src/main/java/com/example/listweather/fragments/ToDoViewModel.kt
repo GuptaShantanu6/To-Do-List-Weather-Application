@@ -18,12 +18,11 @@ class ToDoViewModel(application: Application) : AndroidViewModel(application) {
         readallToDo = repository.readallToDo
     }
 
-    fun addToDo(toDo: ToDo){
-        viewModelScope.launch(Dispatchers.IO){
+    fun addToDo(toDo: ToDo) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.addToDo(toDo)
         }
     }
-
     fun deleteToDo(toDo: ToDo){
         viewModelScope.launch(Dispatchers.IO){
             repository.deleteToDo(toDo)
